@@ -1,0 +1,29 @@
+$borders: 1px solid #000;
+$dark-grey: #868181;
+$soft-grey: #e1e1e1;
+
+.datatable {
+  width: 100%;
+  border-spacing: 0;
+  border: $borders;
+
+  &__head {
+    background-color: $dark-grey;
+    border: $borders;
+    color: #fff;
+  }
+
+  &__head__data,
+  &__body__data {
+    border: $borders;
+    width: 25%;
+    text-align: center;
+    height: 80px;
+  }
+
+  &__body tr {
+    &:nth-child(odd) {
+      background-color: $soft-grey;
+    }
+  }
+}
