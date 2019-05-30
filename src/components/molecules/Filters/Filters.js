@@ -17,9 +17,9 @@ export class Filters extends Component {
   onKeyUpHandler = (filterName, restrictionRegExp, event, transform) => {
     let { value } = event.target;
 
-    if (transform && transform === "toInt") {
-      value = parseInt(value);
-    }
+    // if (transform && transform === "toInt") {
+    //   value = parseInt(value);
+    // }
 
     this.setState(prevState => ({
       searchParams: {

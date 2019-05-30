@@ -20,47 +20,20 @@ export class PlayerList extends Component {
     }
   }
 
-  filterPlayers = searchParams => {
-    let { playersThunks, playersList, filteredPlayersList } = this.props;
-
-    console.log("searchParams", searchParams);
-    console.log("playersList", playersList);
-    console.log("filteredPlayersList", filteredPlayersList);
-
-    const filteredPlayers = Object.entries(searchParams).map((key, value) => {
-      console.log(key, value);
-      const newFilteredList = playersList.filter(player => {
-        if (typeof value === "e") return player[key[0]] === value;
+  onFilterPlayers(playersList, searchParams) {
+    const filterKeys = Object.keys(searchParams);
+    return playersList.filter((item) => {
+      return filterKeys.every(key => {
+        if (!searchParams[key].length) return true;
+        return searchParams[key].includes(item[key]);
       });
-      console.log(newFilteredList);
     });
+  }
 
-    // TODO fix it
-    // const baseList = filteredPlayersList.length
-    //   ? filteredPlayersList
-    //   : playersList;
 
-    // const filteredPlayers = baseList.filter(player => {
-    //   debugger;
-    //   for (let key in searchParams) {
-    //     let result;
-    //     const value = player[key.toLowerCase()];
-    //     if (typeof value === "number") {
-    //       if (searchParams[key] === value) {
-    //         result = player.name;
-    //       }
-    //     }
-    //     if (typeof value === "string") {
-    //       if (value.indexOf(searchParams[key]) > -1) {
-    //         result = player.name;
-    //       }
-    //     }
-
-    //     return result;
-    //   }
-    // });
-    // return filteredPlayers;
-    // playersThunks.fillFilteredPlayerList(filteredPlayers);
+  filterPlayers = searchParams => {
+    let { playersThunks, playersList } = this.props;
+    playersThunks.fillFilteredPlayerList(this.onFilterPlayers(playersList, searchParams));
   };
 
   render() {
