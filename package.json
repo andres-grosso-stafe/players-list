@@ -8,7 +8,7 @@
     "check-prop-types": "^1.1.2",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.1",
     "react-redux": "^7.0.3",
